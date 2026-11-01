@@ -13,7 +13,7 @@ no(){ local d="$1"; shift; if docker exec "$P-$1" "${@:2}" &>/dev/null; then nok
 
 PING="ping -c1 -W2"
 echo "== Erlaubt =="
-yes "F08 client1 -> inet-server (HTTPS)" client1 curl -sk --max-time 4 https://203.0.113.30/
+yes "F08 client1 -> inet-server (HTTP)" client1 curl -s --max-time 4 http://203.0.113.30/
 yes "F09 client1 -> rproxy (HTTPS/WAF)" client1 curl -sk --max-time 4 https://10.0.10.2/
 yes "client1 -> int-router (Gateway)"   client1 $PING 10.0.20.1
 
