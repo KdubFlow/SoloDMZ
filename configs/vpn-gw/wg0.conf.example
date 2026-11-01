@@ -1,0 +1,18 @@
+# WireGuard auf vpn-gw (B2-DMZ) - Zentrale, Site-to-Site zur Zweigstelle (SF-07)
+# Schluessel erzeugen:  wg genkey | tee priv | wg pubkey > pub
+# Danach <...> ersetzen und nach /etc/wireguard/wg0.conf kopieren.
+
+[Interface]
+Address = 10.9.0.1/30
+ListenPort = 51820
+PrivateKey = <PRIVKEY_VPNGW>
+# entschluesselter Verkehr geht weiter an die Edge-FW, die ihn filtert
+PostUp   = ip route add 10.50.0.0/24 dev %i
+PostDown = ip route del 10.50.0.0/24 dev %i
+
+[Peer]
+# Zweigstellen-Gateway ro-gw
+PublicKey = <PUBKEY_ROGW>
+# Nur das Transfernetz und das Zweigstellen-LAN sind ueber diesen Peer erlaubt
+AllowedIPs = 10.9.0.2/32, 10.50.0.0/24
+PersistentKeepalive = 25

@@ -1,0 +1,21 @@
+# WireGuard-Schluessel niemals committen
+*priv*
+*.key
+privkey
+configs/vpn-gw/wg0.conf
+configs/ro-gw/wg0.conf
+
+# Laufzeit / Logs
+/var/log/sun/
+*.log
+*.pcap
+eve.json
+
+# Grafana/SIEM-Daten
+configs/siem/grafana/data/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

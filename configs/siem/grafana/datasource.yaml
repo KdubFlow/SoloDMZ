@@ -1,0 +1,14 @@
+# Grafana-Provisioning (siem-grafana): Loki als Datenquelle.
+# Ablage im Container: /etc/grafana/provisioning/datasources/datasource.yaml
+apiVersion: 1
+
+datasources:
+  - name: Loki
+    type: loki
+    access: proxy
+    url: http://10.0.30.11:3100
+    isDefault: true
+    jsonData:
+      # 1-Sekunden-Anforderung: Mindest-Refresh klein halten (Standard waere 5s)
+      minRefreshInterval: 1s
+      maxLines: 2000

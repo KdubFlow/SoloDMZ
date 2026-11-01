@@ -1,0 +1,17 @@
+#!/usr/sbin/nft -f
+# NFQUEUE-Anbindung fuer ein inline-IPS (SF-08), im Namespace der Firewall ergaenzen.
+# Reicht erlaubten Durchgangsverkehr an Suricata (Queue 0). "bypass" = fail-open:
+# laeuft kein Suricata oder ist die Queue voll, passieren die Pakete ungeprueft,
+# die Firewall-Regeln gelten aber weiter.
+#
+# Auf edge-fw NACH dem Laden von edge-fw/nftables.conf einspielen:
+#   docker cp configs/ips/nfqueue.nft clab-solodmz-edge-fw:/etc/nfqueue.nft
+#   docker exec clab-solodmz-edge-fw nft -f /etc/nfqueue.nft
+# Analog fuer inner-fw.
+
+table inet edge {
+    chain ips {
+        type filter hook forward priority filter + 5; policy accept;
+        ct state new,established counter queue num 0 bypass
+    }
+}

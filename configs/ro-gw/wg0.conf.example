@@ -1,0 +1,18 @@
+# WireGuard auf ro-gw (Zweigstelle) - Full Tunnel in die Zentrale (SF-07, F14)
+# Schluessel erzeugen:  wg genkey | tee priv | wg pubkey > pub
+
+[Interface]
+Address = 10.9.0.2/30
+PrivateKey = <PRIVKEY_ROGW>
+
+[Peer]
+# VPN-Gateway der Zentrale (oeffentliche Firmen-IP)
+PublicKey = <PUBKEY_VPNGW>
+Endpoint = 198.51.100.2:51820
+# Full Tunnel: der gesamte Verkehr der Zweigstelle geht durch die Zentrale
+AllowedIPs = 0.0.0.0/0
+PersistentKeepalive = 25
+
+# Hinweis: Standardroute der Zweigstelle ueber wg0 setzen, z. B.
+#   ip route replace default dev wg0
+# damit auch Internetverkehr (F14) durch Firewall, IPS und Exfil-Bremse laeuft.

@@ -1,0 +1,30 @@
+# =============================================================================
+#  IPS-Regeln (inline, NFQUEUE). SF-08. SID-Bereich 1100000+.
+#  IPS 1 (edge-fw): Web-Angriffe im Klartext zwischen rproxy und web.
+#  IPS 2 (inner-fw): kleiner Satz fuer interne Angriffe (Kette A).
+#  Erst mit "alert" testen, dann auf "drop" umstellen (inline_test -> inline).
+# =============================================================================
+
+# --- IPS 1: SQLi / XSS auf dem Weg rproxy -> web (F05, Klartext) ---
+drop http any any -> 10.0.10.18 80 (msg:"SUN IPS1 SQLi blockiert"; \
+  flow:to_server,established; http.uri; content:"union"; nocase; content:"select"; nocase; distance:0; \
+  classtype:web-application-attack; sid:1100001; rev:1;)
+
+drop http any any -> 10.0.10.18 80 (msg:"SUN IPS1 XSS blockiert"; \
+  flow:to_server,established; http.uri; content:"<script"; nocase; \
+  classtype:web-application-attack; sid:1100002; rev:1;)
+
+drop http any any -> 10.0.10.18 80 (msg:"SUN IPS1 Command Injection blockiert"; \
+  flow:to_server,established; http.uri; pcre:"/(\x3b|\x7c|%3b|%7c)\s*(cat|id|wget|curl|sh)\b/i"; \
+  classtype:web-application-attack; sid:1100003; rev:1;)
+
+# --- IPS 2: C2-Anomalie im Client-Netz (Kette A2) ---
+drop tcp 10.0.20.0/24 any -> any 443 (msg:"SUN IPS2 C2 ohne TLS blockiert"; \
+  flow:to_server,established; app-layer-protocol:!tls; \
+  threshold:type limit, track by_src, count 1, seconds 10; \
+  classtype:trojan-activity; sid:1100004; rev:1;)
+
+# --- IPS 2: Skript-Download auf einen Client (Kette A1) ---
+drop http any any -> 10.0.20.0/24 any (msg:"SUN IPS2 Skript-Download blockiert"; \
+  flow:to_client; file.name; content:".sh"; endswith; \
+  classtype:policy-violation; sid:1100005; rev:1;)

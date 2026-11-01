@@ -1,0 +1,130 @@
+# =============================================================================
+#  SoloDMZ - Zielarchitektur (Interface-Variante, Variante B: Zweigstelle)
+#
+#  Prinzip: Jeder Dienst in eigenem Segment, jeder Weg zwischen zwei Systemen
+#  fuehrt durch eine Firewall, kein Segment dient als Durchgang fuer fremden
+#  Verkehr. Adressen und Routen setzt configure-net.sh (nicht hier).
+#
+#  21 Container, 10 Bridges. IPS 1/2 teilen den Namespace ihrer Firewall.
+# =============================================================================
+name: solodmz
+
+topology:
+  kinds:
+    linux:
+      # Kein Docker-Managementnetz (kein eth0): nur die unten definierten Links.
+      network-mode: none
+      sysctls:
+        net.ipv6.conf.all.disable_ipv6: 1
+        net.ipv6.conf.default.disable_ipv6: 1
+
+  nodes:
+    # ---------------- Simuliertes Internet ----------------
+    isp-router:    { kind: linux, image: sun/net:1.0 }
+    ang-internet:  { kind: linux, image: sun/client:1.0 }   # Angreifer
+    inet-server:   { kind: linux, image: sun/web:1.0 }      # Surf-Ziel + Update-Quelle (F13/F14)
+
+    # ---------------- Zweigstelle (Remote Office, Variante B) ----------------
+    ro-gw:         { kind: linux, image: sun/net:1.0 }       # Site-to-Site-Gateway
+    ro-client1:    { kind: linux, image: sun/client:1.0 }    # Client ohne eigene VPN-Software
+
+    # ---------------- Perimeter ----------------
+    edge-fw:       { kind: linux, image: sun/net:1.0 }
+    ips-edge:                                                 # IPS 1 im Namespace der Edge-FW
+      kind: linux
+      image: sun/ips:1.0
+      network-mode: container:edge-fw
+
+    # ---------------- DMZ: ein Dienst pro Segment ----------------
+    rproxy:                                                 # Proxy + WAF (SF-05/06/07)
+      kind: linux
+      image: owasp/modsecurity-crs:nginx
+      env:
+        BACKEND: "http://10.0.10.18:80"   # Webserver in B1-DMZ (F05)
+        PARANOIA: "1"                      # CRS Paranoia-Level (hoeher = strenger)
+        MODSEC_RULE_ENGINE: "On"           # Blockiermodus (nicht nur DetectionOnly)
+        ANOMALY_INBOUND: "5"
+        ANOMALY_OUTBOUND: "4"
+        SSL_PORT: "443"
+        PORT: "80"
+        SERVER_NAME: "portal.sun.local"
+    web:           { kind: linux, image: sun/web:1.0 }                   # Webserver
+    vpn-gw:        { kind: linux, image: sun/net:1.0 }                   # WireGuard
+    honeypot:      { kind: linux, image: sun/net:1.0 }                   # Platzhalter: Cowrie siehe INSTALL
+
+    # ---------------- Intern ----------------
+    inner-fw:      { kind: linux, image: sun/net:1.0 }
+    ips-inner:                                                 # IPS 2 im Namespace der Inner-FW
+      kind: linux
+      image: sun/ips:1.0
+      network-mode: container:inner-fw
+    int-router:    { kind: linux, image: sun/net:1.0 }
+    client1:       { kind: linux, image: sun/client:1.0 }
+    client2:       { kind: linux, image: sun/client:1.0 }    # "Finanz-PC", Ziel von Kette A
+
+    # ---------------- Backend / SOC ----------------
+    backend-fw:    { kind: linux, image: sun/net:1.0 }
+    siem-loki:     { kind: linux, image: grafana/loki:3.1.1 }
+    siem-grafana:  { kind: linux, image: grafana/grafana:11.2.0 }
+    siem-alloy:    { kind: linux, image: grafana/alloy:v1.3.1 }
+
+    # ---------------- Sensorik ----------------
+    ids:           { kind: linux, image: sun/ips:1.0 }       # passiv, ohne IP, 8 Spiegel
+
+    # ---------------- Bridges (auf dem VM-Host, siehe bridges.sh) ----------------
+    br-internet: { kind: bridge }
+    br-uplink:   { kind: bridge }
+    br-remote:   { kind: bridge }
+    br-fdmz:     { kind: bridge }
+    br-b1dmz:    { kind: bridge }
+    br-b2dmz:    { kind: bridge }
+    br-hdmz:     { kind: bridge }
+    br-transit:  { kind: bridge }
+    br-client:   { kind: bridge }
+    br-backend:  { kind: bridge }
+
+  links:
+    # Internet-Segment 203.0.113.0/24
+    - endpoints: ["isp-router:eth1",   "br-internet:inet-isp"]
+    - endpoints: ["ang-internet:eth1", "br-internet:inet-ang"]
+    - endpoints: ["inet-server:eth1",  "br-internet:inet-srv"]
+    - endpoints: ["ro-gw:eth1",        "br-internet:inet-rogw"]
+
+    # Zweigstellen-LAN 10.50.0.0/24
+    - endpoints: ["ro-gw:eth2",        "br-remote:rem-gw"]
+    - endpoints: ["ro-client1:eth1",   "br-remote:rem-c1"]
+
+    # Uplink 198.51.100.0/30 (Bridge, damit das IDS spiegeln kann)
+    - endpoints: ["isp-router:eth2",   "br-uplink:upl-isp"]
+    - endpoints: ["edge-fw:eth1",      "br-uplink:upl-edge"]
+
+    # DMZ-Segmente: je ein /28 mit eigener Bridge
+    - endpoints: ["edge-fw:eth2",      "br-fdmz:fdmz-edge"]    # F-DMZ 10.0.10.0/28
+    - endpoints: ["rproxy:eth1",       "br-fdmz:fdmz-rpx"]
+    - endpoints: ["edge-fw:eth3",      "br-b1dmz:b1-edge"]     # B1-DMZ 10.0.10.16/28
+    - endpoints: ["web:eth1",          "br-b1dmz:b1-web"]
+    - endpoints: ["edge-fw:eth5",      "br-b2dmz:b2-edge"]     # B2-DMZ 10.0.10.32/28
+    - endpoints: ["vpn-gw:eth1",       "br-b2dmz:b2-vpn"]
+    - endpoints: ["edge-fw:eth6",      "br-hdmz:hdmz-edge"]    # H-DMZ 10.0.10.48/28
+    - endpoints: ["honeypot:eth1",     "br-hdmz:hdmz-hp"]
+
+    # Transit zwischen den Firewalls 10.0.255.0/30 (Bridge, Spiegelpunkt)
+    - endpoints: ["edge-fw:eth4",      "br-transit:tr-edge"]
+    - endpoints: ["inner-fw:eth1",     "br-transit:tr-inner"]
+
+    # Router-Link 10.0.254.0/30 (direkt, kein Durchgang)
+    - endpoints: ["inner-fw:eth2",     "int-router:eth1"]
+
+    # Backend-Link 10.0.253.0/30 (direkt)
+    - endpoints: ["inner-fw:eth3",     "backend-fw:eth1"]
+
+    # Client-Netz 10.0.20.0/24 (Port-Isolation in configure-net.sh)
+    - endpoints: ["int-router:eth2",   "br-client:cli-rtr"]
+    - endpoints: ["client1:eth1",      "br-client:cli-c1"]
+    - endpoints: ["client2:eth1",      "br-client:cli-c2"]
+
+    # Backend-Netz 10.0.30.0/24
+    - endpoints: ["backend-fw:eth2",   "br-backend:be-bfw"]
+    - endpoints: ["siem-loki:eth1",    "br-backend:be-loki"]
+    - endpoints: ["siem-grafana:eth1", "br-backend:be-graf"]
+    - endpoints: ["siem-alloy:eth1",   "br-backend:be-alloy"]
