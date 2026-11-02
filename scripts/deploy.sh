@@ -19,6 +19,11 @@ containerlab deploy -t topo/dmz.clab.yml --reconfigure
 # 4. Adressen, Routen, Isolation, Spiegelung, Firewall-Regeln
 ./scripts/configure-net.sh
 
+# 4b. Container NICHT automatisch neu starten lassen. Schuetzt vor einem Kernel-Lockup,
+#     falls die VM mit laufendem Labor neu gebootet wird (die Bridges sind dann weg).
+#     Beim naechsten Boot bleibt alles ruhig, bis bewusst wieder deploy.sh laeuft.
+docker update --restart=no $(docker ps -aq --filter "name=clab-solodmz") >/dev/null 2>&1 || true
+
 # 5. Dienste konfigurieren (WAF/VPN/IDS/IPS/SIEM) - siehe docs/INSTALL.md
 echo
 echo "Basis steht. Dienste einrichten: docs/INSTALL.md Abschnitt 5-9."
