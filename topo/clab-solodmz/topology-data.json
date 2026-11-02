@@ -1,0 +1,1419 @@
+{
+  "name": "solodmz",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-a8a56f283e20",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true,
+        "ipam": {
+          "provider": "containerlab"
+        }
+      }
+    }
+  },
+  "ssh-pub-keys": ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOabVmJAJ+OcmjtMagbmOM6ZS8Wrx+7uV+fOQeRlBQD/","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINTW1FinENlum02fuIy3+WEexZppX9qdY139dviKZ5c3","ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM9BE2yeMcgIQGRe6r9u+3JXIo0cuHfhEAQ5eHk22Quc"],
+  "nodes": {
+    "ang-internet": {
+      "index": "0",
+      "shortname": "ang-internet",
+      "longname": "clab-solodmz-ang-internet",
+      "fqdn": "ang-internet.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/ang-internet",
+      "kind": "linux",
+      "image": "sun/client:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/ang-internet",
+        "clab-node-longname": "clab-solodmz-ang-internet",
+        "clab-node-name": "ang-internet",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "backend-fw": {
+      "index": "1",
+      "shortname": "backend-fw",
+      "longname": "clab-solodmz-backend-fw",
+      "fqdn": "backend-fw.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/backend-fw",
+      "kind": "linux",
+      "image": "sun/net:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/backend-fw",
+        "clab-node-longname": "clab-solodmz-backend-fw",
+        "clab-node-name": "backend-fw",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "br-b1dmz": {
+      "index": "2",
+      "shortname": "br-b1dmz",
+      "longname": "clab-solodmz-br-b1dmz",
+      "fqdn": "br-b1dmz.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-b1dmz",
+      "kind": "bridge",
+      "image": "",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "bridge",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-b1dmz",
+        "clab-node-longname": "clab-solodmz-br-b1dmz",
+        "clab-node-name": "br-b1dmz",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "br-b2dmz": {
+      "index": "3",
+      "shortname": "br-b2dmz",
+      "longname": "clab-solodmz-br-b2dmz",
+      "fqdn": "br-b2dmz.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-b2dmz",
+      "kind": "bridge",
+      "image": "",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "bridge",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-b2dmz",
+        "clab-node-longname": "clab-solodmz-br-b2dmz",
+        "clab-node-name": "br-b2dmz",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "br-backend": {
+      "index": "4",
+      "shortname": "br-backend",
+      "longname": "clab-solodmz-br-backend",
+      "fqdn": "br-backend.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-backend",
+      "kind": "bridge",
+      "image": "",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "bridge",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-backend",
+        "clab-node-longname": "clab-solodmz-br-backend",
+        "clab-node-name": "br-backend",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "br-client": {
+      "index": "5",
+      "shortname": "br-client",
+      "longname": "clab-solodmz-br-client",
+      "fqdn": "br-client.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-client",
+      "kind": "bridge",
+      "image": "",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "bridge",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-client",
+        "clab-node-longname": "clab-solodmz-br-client",
+        "clab-node-name": "br-client",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "br-fdmz": {
+      "index": "6",
+      "shortname": "br-fdmz",
+      "longname": "clab-solodmz-br-fdmz",
+      "fqdn": "br-fdmz.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-fdmz",
+      "kind": "bridge",
+      "image": "",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "bridge",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-fdmz",
+        "clab-node-longname": "clab-solodmz-br-fdmz",
+        "clab-node-name": "br-fdmz",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "br-hdmz": {
+      "index": "7",
+      "shortname": "br-hdmz",
+      "longname": "clab-solodmz-br-hdmz",
+      "fqdn": "br-hdmz.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-hdmz",
+      "kind": "bridge",
+      "image": "",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "bridge",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-hdmz",
+        "clab-node-longname": "clab-solodmz-br-hdmz",
+        "clab-node-name": "br-hdmz",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "br-internet": {
+      "index": "8",
+      "shortname": "br-internet",
+      "longname": "clab-solodmz-br-internet",
+      "fqdn": "br-internet.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-internet",
+      "kind": "bridge",
+      "image": "",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "bridge",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-internet",
+        "clab-node-longname": "clab-solodmz-br-internet",
+        "clab-node-name": "br-internet",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "br-remote": {
+      "index": "9",
+      "shortname": "br-remote",
+      "longname": "clab-solodmz-br-remote",
+      "fqdn": "br-remote.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-remote",
+      "kind": "bridge",
+      "image": "",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "bridge",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-remote",
+        "clab-node-longname": "clab-solodmz-br-remote",
+        "clab-node-name": "br-remote",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "br-transit": {
+      "index": "10",
+      "shortname": "br-transit",
+      "longname": "clab-solodmz-br-transit",
+      "fqdn": "br-transit.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-transit",
+      "kind": "bridge",
+      "image": "",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "bridge",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-transit",
+        "clab-node-longname": "clab-solodmz-br-transit",
+        "clab-node-name": "br-transit",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "br-uplink": {
+      "index": "11",
+      "shortname": "br-uplink",
+      "longname": "clab-solodmz-br-uplink",
+      "fqdn": "br-uplink.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-uplink",
+      "kind": "bridge",
+      "image": "",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "bridge",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/br-uplink",
+        "clab-node-longname": "clab-solodmz-br-uplink",
+        "clab-node-name": "br-uplink",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "client1": {
+      "index": "12",
+      "shortname": "client1",
+      "longname": "clab-solodmz-client1",
+      "fqdn": "client1.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/client1",
+      "kind": "linux",
+      "image": "sun/client:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/client1",
+        "clab-node-longname": "clab-solodmz-client1",
+        "clab-node-name": "client1",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "client2": {
+      "index": "13",
+      "shortname": "client2",
+      "longname": "clab-solodmz-client2",
+      "fqdn": "client2.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/client2",
+      "kind": "linux",
+      "image": "sun/client:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/client2",
+        "clab-node-longname": "clab-solodmz-client2",
+        "clab-node-name": "client2",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "edge-fw": {
+      "index": "14",
+      "shortname": "edge-fw",
+      "longname": "clab-solodmz-edge-fw",
+      "fqdn": "edge-fw.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/edge-fw",
+      "kind": "linux",
+      "image": "sun/net:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/edge-fw",
+        "clab-node-longname": "clab-solodmz-edge-fw",
+        "clab-node-name": "edge-fw",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "honeypot": {
+      "index": "15",
+      "shortname": "honeypot",
+      "longname": "clab-solodmz-honeypot",
+      "fqdn": "honeypot.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/honeypot",
+      "kind": "linux",
+      "image": "sun/net:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/honeypot",
+        "clab-node-longname": "clab-solodmz-honeypot",
+        "clab-node-name": "honeypot",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "ids": {
+      "index": "16",
+      "shortname": "ids",
+      "longname": "clab-solodmz-ids",
+      "fqdn": "ids.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/ids",
+      "kind": "linux",
+      "image": "sun/ips:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/ids",
+        "clab-node-longname": "clab-solodmz-ids",
+        "clab-node-name": "ids",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "inet-server": {
+      "index": "17",
+      "shortname": "inet-server",
+      "longname": "clab-solodmz-inet-server",
+      "fqdn": "inet-server.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/inet-server",
+      "kind": "linux",
+      "image": "sun/web:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/inet-server",
+        "clab-node-longname": "clab-solodmz-inet-server",
+        "clab-node-name": "inet-server",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "inner-fw": {
+      "index": "18",
+      "shortname": "inner-fw",
+      "longname": "clab-solodmz-inner-fw",
+      "fqdn": "inner-fw.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/inner-fw",
+      "kind": "linux",
+      "image": "sun/net:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/inner-fw",
+        "clab-node-longname": "clab-solodmz-inner-fw",
+        "clab-node-name": "inner-fw",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "int-router": {
+      "index": "19",
+      "shortname": "int-router",
+      "longname": "clab-solodmz-int-router",
+      "fqdn": "int-router.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/int-router",
+      "kind": "linux",
+      "image": "sun/net:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/int-router",
+        "clab-node-longname": "clab-solodmz-int-router",
+        "clab-node-name": "int-router",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "ips-edge": {
+      "index": "20",
+      "shortname": "ips-edge",
+      "longname": "clab-solodmz-ips-edge",
+      "fqdn": "ips-edge.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/ips-edge",
+      "kind": "linux",
+      "image": "sun/ips:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/ips-edge",
+        "clab-node-longname": "clab-solodmz-ips-edge",
+        "clab-node-name": "ips-edge",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "ips-inner": {
+      "index": "21",
+      "shortname": "ips-inner",
+      "longname": "clab-solodmz-ips-inner",
+      "fqdn": "ips-inner.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/ips-inner",
+      "kind": "linux",
+      "image": "sun/ips:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/ips-inner",
+        "clab-node-longname": "clab-solodmz-ips-inner",
+        "clab-node-name": "ips-inner",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "isp-router": {
+      "index": "22",
+      "shortname": "isp-router",
+      "longname": "clab-solodmz-isp-router",
+      "fqdn": "isp-router.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/isp-router",
+      "kind": "linux",
+      "image": "sun/net:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/isp-router",
+        "clab-node-longname": "clab-solodmz-isp-router",
+        "clab-node-name": "isp-router",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "ro-client1": {
+      "index": "23",
+      "shortname": "ro-client1",
+      "longname": "clab-solodmz-ro-client1",
+      "fqdn": "ro-client1.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/ro-client1",
+      "kind": "linux",
+      "image": "sun/client:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/ro-client1",
+        "clab-node-longname": "clab-solodmz-ro-client1",
+        "clab-node-name": "ro-client1",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "ro-gw": {
+      "index": "24",
+      "shortname": "ro-gw",
+      "longname": "clab-solodmz-ro-gw",
+      "fqdn": "ro-gw.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/ro-gw",
+      "kind": "linux",
+      "image": "sun/net:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/ro-gw",
+        "clab-node-longname": "clab-solodmz-ro-gw",
+        "clab-node-name": "ro-gw",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "rproxy": {
+      "index": "25",
+      "shortname": "rproxy",
+      "longname": "clab-solodmz-rproxy",
+      "fqdn": "rproxy.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/rproxy",
+      "kind": "linux",
+      "image": "owasp/modsecurity-crs:nginx",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/rproxy",
+        "clab-node-longname": "clab-solodmz-rproxy",
+        "clab-node-name": "rproxy",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "siem-alloy": {
+      "index": "26",
+      "shortname": "siem-alloy",
+      "longname": "clab-solodmz-siem-alloy",
+      "fqdn": "siem-alloy.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/siem-alloy",
+      "kind": "linux",
+      "image": "grafana/alloy:v1.3.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/siem-alloy",
+        "clab-node-longname": "clab-solodmz-siem-alloy",
+        "clab-node-name": "siem-alloy",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "siem-grafana": {
+      "index": "27",
+      "shortname": "siem-grafana",
+      "longname": "clab-solodmz-siem-grafana",
+      "fqdn": "siem-grafana.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/siem-grafana",
+      "kind": "linux",
+      "image": "grafana/grafana:11.2.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/siem-grafana",
+        "clab-node-longname": "clab-solodmz-siem-grafana",
+        "clab-node-name": "siem-grafana",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "siem-loki": {
+      "index": "28",
+      "shortname": "siem-loki",
+      "longname": "clab-solodmz-siem-loki",
+      "fqdn": "siem-loki.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/siem-loki",
+      "kind": "linux",
+      "image": "grafana/loki:3.1.1",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/siem-loki",
+        "clab-node-longname": "clab-solodmz-siem-loki",
+        "clab-node-name": "siem-loki",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "vpn-gw": {
+      "index": "29",
+      "shortname": "vpn-gw",
+      "longname": "clab-solodmz-vpn-gw",
+      "fqdn": "vpn-gw.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/vpn-gw",
+      "kind": "linux",
+      "image": "sun/net:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/vpn-gw",
+        "clab-node-longname": "clab-solodmz-vpn-gw",
+        "clab-node-name": "vpn-gw",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    },
+    "web": {
+      "index": "30",
+      "shortname": "web",
+      "longname": "clab-solodmz-web",
+      "fqdn": "web.solodmz.io",
+      "group": "",
+      "labdir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/web",
+      "kind": "linux",
+      "image": "sun/web:1.0",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "",
+      "mgmt-ipv4-prefix-length": 0,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-a8a56f283e20",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/lab/soloDMZ/solodmz/topo/clab-solodmz/web",
+        "clab-node-longname": "clab-solodmz-web",
+        "clab-node-name": "web",
+        "clab-node-type": "",
+        "clab-owner": "lab",
+        "clab-topo-file": "/home/lab/soloDMZ/solodmz/topo/dmz.clab.yml",
+        "containerlab": "solodmz"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "isp-router",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:bf:19:0e",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-internet",
+          "interface": "inet-isp",
+          "mac": "aa:c1:ab:9e:54:ad",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "ang-internet",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:32:9e:7c",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-internet",
+          "interface": "inet-ang",
+          "mac": "aa:c1:ab:b4:71:ea",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "inet-server",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:ff:d0:38",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-internet",
+          "interface": "inet-srv",
+          "mac": "aa:c1:ab:8f:b2:11",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "ro-gw",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:17:8a:d4",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-internet",
+          "interface": "inet-rogw",
+          "mac": "aa:c1:ab:6e:c3:1c",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "ro-gw",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:66:de:70",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-remote",
+          "interface": "rem-gw",
+          "mac": "aa:c1:ab:34:d8:dd",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "ro-client1",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:4d:f1:df",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-remote",
+          "interface": "rem-c1",
+          "mac": "aa:c1:ab:8e:3d:7c",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "isp-router",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:0b:ce:30",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-uplink",
+          "interface": "upl-isp",
+          "mac": "aa:c1:ab:9e:c8:a7",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "edge-fw",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:26:ad:8b",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-uplink",
+          "interface": "upl-edge",
+          "mac": "aa:c1:ab:88:6b:6f",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "edge-fw",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:df:ee:25",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-fdmz",
+          "interface": "fdmz-edge",
+          "mac": "aa:c1:ab:09:fe:81",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "rproxy",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:b7:3d:76",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-fdmz",
+          "interface": "fdmz-rpx",
+          "mac": "aa:c1:ab:b5:b2:46",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "edge-fw",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:eb:90:06",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-b1dmz",
+          "interface": "b1-edge",
+          "mac": "aa:c1:ab:47:7f:cf",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "web",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:25:3a:cb",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-b1dmz",
+          "interface": "b1-web",
+          "mac": "aa:c1:ab:79:b9:40",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "edge-fw",
+          "interface": "eth5",
+          "mac": "aa:c1:ab:19:cb:55",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-b2dmz",
+          "interface": "b2-edge",
+          "mac": "aa:c1:ab:c0:1a:d2",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "vpn-gw",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:29:d7:ec",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-b2dmz",
+          "interface": "b2-vpn",
+          "mac": "aa:c1:ab:1f:88:85",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "edge-fw",
+          "interface": "eth6",
+          "mac": "aa:c1:ab:05:50:6e",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-hdmz",
+          "interface": "hdmz-edge",
+          "mac": "aa:c1:ab:99:5b:7a",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "honeypot",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:08:5c:80",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-hdmz",
+          "interface": "hdmz-hp",
+          "mac": "aa:c1:ab:42:20:32",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "edge-fw",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:bf:a2:78",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-transit",
+          "interface": "tr-edge",
+          "mac": "aa:c1:ab:50:78:14",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "inner-fw",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:1e:a8:7c",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-transit",
+          "interface": "tr-inner",
+          "mac": "aa:c1:ab:d3:14:e9",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "inner-fw",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:bf:bc:58",
+          "peer": "z"
+        },
+        "z": {
+          "node": "int-router",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:8e:5e:45",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "inner-fw",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:08:24:34",
+          "peer": "z"
+        },
+        "z": {
+          "node": "backend-fw",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:27:0f:4b",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "int-router",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:e1:60:27",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-client",
+          "interface": "cli-rtr",
+          "mac": "aa:c1:ab:ca:5c:60",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "client1",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:95:ca:c8",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-client",
+          "interface": "cli-c1",
+          "mac": "aa:c1:ab:06:eb:6f",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "client2",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:2e:be:18",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-client",
+          "interface": "cli-c2",
+          "mac": "aa:c1:ab:17:3f:00",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "backend-fw",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:3f:04:b8",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-backend",
+          "interface": "be-bfw",
+          "mac": "aa:c1:ab:ff:a7:0a",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "siem-loki",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:f7:c9:57",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-backend",
+          "interface": "be-loki",
+          "mac": "aa:c1:ab:d3:9e:7e",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "siem-grafana",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:27:a9:7a",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-backend",
+          "interface": "be-graf",
+          "mac": "aa:c1:ab:d9:b5:e2",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "siem-alloy",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:93:d1:27",
+          "peer": "z"
+        },
+        "z": {
+          "node": "br-backend",
+          "interface": "be-alloy",
+          "mac": "aa:c1:ab:1e:78:f6",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}
